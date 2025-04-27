@@ -20,19 +20,19 @@ public class BadCalculator extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        // Setup display
+
         display = new TextField("0");
         display.setEditable(false);
         display.setAlignment(Pos.CENTER_RIGHT);
         display.setStyle("-fx-font-size: 18px;");
 
-        // Create grid layout
+
         GridPane grid = new GridPane();
         grid.setPadding(new Insets(10));
         grid.setHgap(5);
         grid.setVgap(5);
 
-        // Create number buttons
+
         for (int i = 0; i < 10; i++) {
             final int number = i;
             Button button = new Button(String.valueOf(i));
@@ -47,7 +47,7 @@ public class BadCalculator extends Application {
                 display.setText(display.getText() + number);
             });
 
-            // Position numbers in grid
+
             if (i == 0) {
                 grid.add(button, 1, 4);
             } else {
@@ -55,7 +55,7 @@ public class BadCalculator extends Application {
             }
         }
 
-        // Create operator buttons
+
         Button addBtn = createOperatorButton("+");
         grid.add(addBtn, 3, 3);
 
@@ -68,7 +68,7 @@ public class BadCalculator extends Application {
         Button divideBtn = createOperatorButton("/");
         grid.add(divideBtn, 3, 0);
 
-        // Create equals button
+
         Button equalsBtn = new Button("=");
         equalsBtn.setPrefSize(50, 50);
         equalsBtn.setStyle("-fx-background-color: #ffa500; -fx-text-fill: #ffffff; -fx-font-size: 14px;");
@@ -77,7 +77,7 @@ public class BadCalculator extends Application {
         });
         grid.add(equalsBtn, 3, 4);
 
-        // Create clear button
+
         Button clearBtn = new Button("C");
         clearBtn.setPrefSize(50, 50);
         clearBtn.setStyle("-fx-background-color: #ffa500; -fx-text-fill: #ffffff; -fx-font-size: 14px;");
@@ -89,7 +89,7 @@ public class BadCalculator extends Application {
         });
         grid.add(clearBtn, 0, 4);
 
-        // Create square root button
+
         Button sqrtBtn = new Button("√");
         sqrtBtn.setPrefSize(50, 50);
         sqrtBtn.setStyle("-fx-background-color: #ffa500; -fx-text-fill: #ffffff; -fx-font-size: 14px;");
@@ -107,20 +107,20 @@ public class BadCalculator extends Application {
         });
         grid.add(sqrtBtn, 2, 4);
 
-        // Create percentage button
+
         Button percentBtn = new Button("%");
         percentBtn.setPrefSize(50, 50);
         percentBtn.setStyle("-fx-background-color: #ffa500; -fx-text-fill: #ffffff; -fx-font-size: 14px;");
         percentBtn.setOnAction(e -> {
             if (!display.getText().isEmpty() && !operator.isEmpty()) {
                 double value = Double.parseDouble(display.getText());
-                // Apply percentage as a calculation relative to first number
+
                 display.setText(formatNumber(num1 * value / 100));
             }
         });
         grid.add(percentBtn, 0, 0);
 
-        // Create memory buttons
+
         Button memoryAddBtn = new Button("M+");
         memoryAddBtn.setPrefSize(50, 50);
         memoryAddBtn.setStyle("-fx-background-color: #ffa500; -fx-text-fill: #ffffff; -fx-font-size: 14px;");
@@ -140,7 +140,7 @@ public class BadCalculator extends Application {
         });
         grid.add(memoryRecallBtn, 2, 0);
 
-        // Set up scene
+
         VBox root = new VBox(10);
         root.setPadding(new Insets(10));
         root.getChildren().addAll(display, grid);
@@ -174,7 +174,7 @@ public class BadCalculator extends Application {
             double num2 = Double.parseDouble(display.getText());
             double result = 0;
 
-            // Perform calculation based on operator
+
             try {
                 switch (operator) {
                     case "+":
